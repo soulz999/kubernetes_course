@@ -1,0 +1,36 @@
+########################################
+###### REPLICATION CONTROLLERS #########
+########################################
+
+# Create replica controller
+kubectl create -f rc-definition.yml
+
+# Get all replication controllers
+kbectl get replicationcontroller
+
+# Get pods
+kubectl get pods
+
+#"rc" wildcard means it was created by replication controller
+
+
+
+############################
+###### REPLICA SET #########
+############################
+
+# Get all replicaset
+kubectl get replicaset
+
+# Get pods
+kubectl get pods
+
+#"replicaset" wildcard means it was created by replica set
+
+#If you want to increase the number of replicas for the pod you can edit the file and run the command:
+kubectl replace -f replicaset-definition.yml
+#OR
+kubectl scale --replicas=6 -f replicaset-definition.yml
+#OR
+kubectl scale --replicas=6 replicaset myapp-replicaset
+
