@@ -1,0 +1,20 @@
+########################################
+############ DEPLOYMENT ################
+########################################
+
+# Create deployment
+kubectl create -f deployment-definition.yml
+
+# Get all deployments
+kubectl get deployments
+
+# Get replicaset (our deployment has replicasets)
+kubectl get replicaset
+
+# Get pods
+kubectl get pods
+
+#GET ALL CREATED:
+kubectl get all
+
+
