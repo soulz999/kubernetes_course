@@ -1,0 +1,62 @@
+########################################
+############# ROLLOUT ##################
+########################################
+
+# get rollout status
+kubectl rollout status
+
+# get rollout history
+kubectl rollout history deployment/deploy-name
+
+###### ROLLOUT STATEGIES #########
+if strategy is not defined he uses the default one
+
+a) Recreate strategy (not the default)
+  1st delete all apps with old version
+  2nd create all apps with new version
+  Problem: will have a downtime from deleting and creating
+
+b) Rolling update (default)
+  Based on the existing pods and replicas, he turns down one pod and upgrade that pod to the last version. 
+  Continue doing this following operation to the rest of the pods.
+
+# To do a rollout / update on pods. Note you have to update the file for the desired version and than run the command:
+kubectl apply -f deployment-definition.yml
+
+# Another way for rollout. Note nginx-container is the containers-name (define on the spec, meaning pod) and what follows after is the image and tag "nginx:1.9.1"
+kubectl set image deployment/deploy-name \ nginx-container:nginx:1.9.1
+
+
+# Running the describe deployment you will have a section called Events which contains the information related to the rollout (output vary based on the rollout strategy):
+kubectl describe deployment deploy-name
+
+
+#Note that, deployment will create another replicaset and based on the strategy will delete/create pods. Again, if rolling it will remove one at a time and create one at a time in the new replicaset. Using the recreate it will create and remove all at once.
+
+
+# In case any problems are detected on the new upgraded version you can rollout to the last version (downgrade) by running the command:
+kubectl rollout undo deployment/deploy-name
+
+
+
+
+####################################
+############ summary ###############
+####################################
+
+#create (record will save the commands in cause of change):
+kubectl create -f deployment-definition.yml --record
+
+#get:
+kubectl get deployments
+
+#update:
+kubectl apply -f deployment-definition.yml
+kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
+
+#status:
+kubectl rollout status deployment/myapp-deployment
+kubectl rollout history deployment/myapp-deployment
+
+#rollback
+kubectl rollout undo deployment/myapp-deployment
