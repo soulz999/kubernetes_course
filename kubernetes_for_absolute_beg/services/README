@@ -1,0 +1,13 @@
+########################################
+############## SERVICE #################
+########################################
+
+# Create service
+kubectl create -f service-definition.yml
+
+# Get all deployments
+kubectl get services
+
+# Note that the selector is the responsible to link the service to the pod
+# If you have more pods running on the same node the service will automatically forward clients to one of the available pods. Note that the replicas also contain the same label in all pods.
+
