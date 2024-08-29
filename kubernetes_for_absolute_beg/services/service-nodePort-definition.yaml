@@ -9,5 +9,5 @@ spec:
       port: 80
       nodePort: 30008
   selector:
-    app: myapp-pod
-    type: front-end
+    app: nginx
+    tier: frontend
