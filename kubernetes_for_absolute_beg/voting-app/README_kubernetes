@@ -1,0 +1,18 @@
+# Steps to deploy this app in kubernetes:
+
+#1st deploy the pods
+#2nd Create Services (ClusterIP)
+#  1. redis
+#  2. db
+#
+#3rd: Create Services (NodePort)
+#  1. voting-app
+#  2. result-app
+#
+
+#images:
+# kodekloud/examplevotingapp_vote:v1
+# kodekloud/examplevotingapp_result:v1
+# redis
+# postgresql
+# kodekloud/examplevotingapp_worker:v1
