@@ -1,3 +1,6 @@
+#GET CODE FROM:
+# https://github.com/kodekloudhub/example-voting-app-kubernetes.git
+#
 # Steps to deploy this app in kubernetes:
 
 #1st deploy the pods
