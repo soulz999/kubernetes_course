@@ -1,6 +1,6 @@
 kubectl run nginx-pod --image=nginx:alpine --dry-run=client -o yaml >> nginx-pod.yaml
 
-kubectl run redis --image=redis:alpine --dry-run=client -o yaml > redis.yaml
+kubectl run redis --image=redis:alpine --labels="tier=db,app=redis" --dry-run=client -o yaml > redis.yaml
 
 kubectl create service nodeport redis-service --tcp=6379:6379 --node-port=30200 --dry-run=client -o yaml > redis-service.yaml
 #need to edit the name for "redis"
