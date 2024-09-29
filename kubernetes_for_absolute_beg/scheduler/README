@@ -1,0 +1,5 @@
+nodeName: node02
+
+Is for this pod to be run on the node02. This is what is indicated to the kube-scheduler container.
+If the kube-scheduler container is not deployed, the node02 would be stuck in a pending state and only setting this parameter on the pod definition file would resolve it. (Like manually doing what kube-scheduler does automatically)
+
