@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-daemon
+  labels: 
+    othercomponents: kube-proxy
+    secondcomponents: weave-net
+spec:
+  template:
+    metadata:
+      labels:
+        app: monitoring-agent
+    spec:
+      containers:
+        - name: monitoring-agent
+          image: monitoring-agent
+  selector:
+    matchLabels:
+      name: monitoring-agent
