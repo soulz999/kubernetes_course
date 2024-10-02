@@ -1,0 +1,4 @@
+# We vary the scheduler by setting the "ExecStart" on the kubernetes cluster:
+# ExecStart= /usr/local/bin/kube-scheduler --config=/etc/kubernetes/config/my-scheduler-config.yaml
+
+#Nowadays we install kubernetes wit kubeadm and it does not uses the service. So a way of creating our scheduler is by creating the yaml manifest.
